@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:50:45 by afontain          #+#    #+#             */
-/*   Updated: 2024/10/24 13:50:47 by afontain         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:52:52 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	Zombie::randomChump(std::string name)
 {
-	Zombie zomzom(name);
+	Zombie ZombieName(name);
 
-	zomzom.announce();
+	ZombieName.announce();
 }
 
 void	Zombie::announce()
 {
-	std::cout << _name << " : BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:53:26 by afontain          #+#    #+#             */
-/*   Updated: 2024/10/24 13:53:29 by afontain         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:05:25 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Zombie::Zombie(void)
 
 Zombie::~Zombie(void)
 {
-	std::cout << _name << " --- tshuss !" << std::endl;
+	std::cout << _name << " -> Destroyed !" << std::endl;
 	return ;
 }
 
