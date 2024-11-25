@@ -6,7 +6,7 @@
 #    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 15:58:55 by afontain          #+#    #+#              #
-#    Updated: 2024/07/16 15:58:59 by afontain         ###   ########.fr        #
+#    Updated: 2024/10/25 15:48:56 by afontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC = ./megaphone.cpp \
 
 CC =	c++
 
-CPPFLAGS = -Wall -Werror -Wextra
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
 AR = ar rcs
 

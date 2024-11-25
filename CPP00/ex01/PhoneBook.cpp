@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 17:26:14 by afontain          #+#    #+#             */
-/*   Updated: 2024/10/24 12:27:06 by afontain         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:35:18 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int  PhoneBook::checkContact(std::string str)
 
 	if (isdigit(str) == 0)
 		return (0);
-	nb = std::stol(str);
+	nb = std::strtol(str.c_str(), NULL, 10);
 	if (nb > this->i || nb > 2147483647 || nb > 8 || nb < 0 )
 		return (0);
 	if (nb > 0)	
@@ -69,12 +69,14 @@ void PhoneBook::search()
 	std::cout << std::endl;
 	if (i == 0)
 		return ;
-	std::cout << "Chose a contact (0 for none): ";
-	getline(std::cin, str);
+	std::cout << "Chose a contact (0 for none and leave): ";
+	if (!std::getline(std::cin, str))
+		return ;
 	while (checkContact(str) == 0)
 	{
 		std::cout << std::endl;
 		std::cout << " \033[1;31mWrong imput,\033[0;m choose a contact, (0) for none : ";
-		getline(std::cin, str);
+		if (!std::getline(std::cin, str))
+			return ;
 	}
 }

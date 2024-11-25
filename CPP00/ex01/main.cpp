@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 17:26:11 by afontain          #+#    #+#             */
-/*   Updated: 2024/10/24 12:21:22 by afontain         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:49:34 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main()
 	int i = 0;
 	
 	std::cout << "\033[1;30mWrite a command :\033[0m";
-	while(getline(std::cin, str))
+	while(std::getline(std::cin, str))
 	{
-		
+
 		if (str == "EXIT")
 		{
 			i = 1;

@@ -6,7 +6,7 @@
 #    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 00:07:25 by afontain          #+#    #+#              #
-#    Updated: 2024/11/22 00:07:26 by afontain         ###   ########.fr        #
+#    Updated: 2024/11/22 16:41:40 by afontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ vpath %.cpp $(foreach dir, $(SRC_DIR), $(dir):)
 HEADER		=	fixed.hpp		\
 
 SRCS	 	=	main.cpp		\
-				operator.cpp	\
 				fixed.cpp
 
 OBJS		=	$(SRCS:%.cpp=${OBJ_DIR}/%.o)

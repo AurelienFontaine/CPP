@@ -5,23 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/18 16:17:11 by afontain          #+#    #+#              #
-#    Updated: 2024/11/18 16:17:18 by afontain         ###   ########.fr        #
+#    Created: 2024/11/22 00:06:34 by afontain          #+#    #+#              #
+#    Updated: 2024/11/25 16:50:35 by afontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	harl
+NAME		=	ClapTrap
 
 OBJ_DIR		=	objs
-
 SRC_DIR		=	$(shell find . -type d)
 
 vpath %.cpp $(foreach dir, $(SRC_DIR), $(dir):)
 
-HEADER		=	Harl.hpp
+HEADER		=   ClapTrap.hpp \
 
-SRCS	 	=	main.cpp		\
-				Harl.cpp
+SRCS	 	=	main.cpp \
+				ClapTrap.cpp
 
 OBJS		=	$(SRCS:%.cpp=${OBJ_DIR}/%.o)
 

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator.cpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 00:06:59 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/22 00:07:01 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/25 16:49:22 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/25 16:58:21 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fixed.hpp"
+#include "ClapTrap.hpp"
 
-Fixed	&Fixed::operator = (const Fixed &toCopy)
+ClapTrap::ClapTrap(void)
 {
-	std::cout << "Copy assignment called" << std::endl;
-	_nb = toCopy.getRawBits();
-	return (*this);
+	std::cout << "Default contructor called" << std::endl;
 }
 
-std::ostream	&operator << (std::ostream &out, Fixed const &fixed)
+ClapTrap::~ClapTrap(void)
 {
-	out << fixed.toFloat();
-	return (out);
+	std::cout << "Destructor called" << std::endl;
 }
+
