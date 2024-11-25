@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 00:06:40 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/22 16:31:58 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:54:12 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,10 @@ int	Fixed::toInt(void) const
 	return (_nb >> _bits);
 }
 
-Fixed	&Fixed::operator = (const Fixed &n)
+Fixed	&Fixed::operator = (const Fixed &toCopy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &n)
-	{
-		this->setRawBits(n.getRawBits());
-	}
+	std::cout << "Copy assigment operator called" << std::endl;
+	_nb = toCopy.getRawBits();
 	return (*this);
 }
 
