@@ -6,21 +6,24 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:49:30 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/26 16:32:52 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:27:48 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
-	ClapTrap First("Moi");
-	ClapTrap Second("Lui");
-	First.status();
+	FragTrap First("X");
+
+	// ClapTrap Test("yo");
+	// Test.guardGate();
 	
+	First.status();
 
 	// First.takeDamage(12);
-	First.attack("Lui"); 
+	
+	First.attack("Yo");
 	First.beRepaired(4);
 	First.beRepaired(-2);
 	First.beRepaired(4);
@@ -33,8 +36,11 @@ int main(void)
 	First.attack("Test");
 	First.takeDamage(-10);
 	First.beRepaired(100);
+
 	First.status();
+	
 	First.takeDamage(69);
 	
+	First.highFivesGuys();
 	First.status();
 }

@@ -6,15 +6,25 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:49:22 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/26 16:10:50 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:44:10 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void) : _Name("Default"), _hit_points(10), _nrg_points(10), _att_dmg(0)
+{
+	std::cout << "Claptrap default is created" << std::endl;	
+}
+
 ClapTrap::ClapTrap(std::string Name) : _Name(Name), _hit_points(10), _nrg_points(10), _att_dmg(0)
 {
 	std::cout << "Claptrap " << _Name << " is created" << std::endl;	
+}
+
+ClapTrap::ClapTrap(std::string Name, unsigned int hit_points, unsigned int nrg_points, unsigned int att_dmg) : _Name(Name), _hit_points(hit_points), _nrg_points(nrg_points), _att_dmg(att_dmg)
+{
+	std::cout << "Claptrap " << Name << " is created" << std::endl;	
 }
 
 ClapTrap::~ClapTrap(void)
@@ -28,13 +38,6 @@ ClapTrap::ClapTrap(const ClapTrap &ToCopy)
 	*this = ToCopy;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &ToCopy) 
-{
-	std::cout << "Copy assignment operator called" << std::endl;
-	_Name = ToCopy._Name;
-	return (*this);
-}
-
 void	ClapTrap::status()
 {
 	std::cout << "-----------" << std::endl;
@@ -43,6 +46,15 @@ void	ClapTrap::status()
 	std::cout << "Energy : " << _nrg_points << std::endl;
 	std::cout << "Attack : " << _att_dmg << std::endl;
 	std::cout << "-----------" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator = (const ClapTrap &ToCopy)
+{
+	this->_Name = ToCopy._Name;
+	this->_hit_points = ToCopy._hit_points;
+	this->_nrg_points = ToCopy._nrg_points;
+	this->_att_dmg = ToCopy._att_dmg;
+	return(*this);
 }
 
 void ClapTrap::attack(const std::string& target)
