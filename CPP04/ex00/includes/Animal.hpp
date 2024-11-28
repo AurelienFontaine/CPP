@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:20:57 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/28 12:22:47 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:04:45 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@
 class Animal
 {
 	protected :
-		std::string type;
+		std::string _type;
 	public :
+		Animal(void);
+		Animal(std::string Type);
+		~Animal(void);
+		Animal(const Animal &ToCopy);
+		Animal&	operator=(const Animal &ToCopy);
 
+		void makesound(std::string type);
 };
 
 #endif
