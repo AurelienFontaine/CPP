@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:20:51 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/29 18:25:31 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/30 00:15:55 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Cat::Cat(void) : Animal()
 Cat::Cat(std::string type, std::string sound) : Animal(type, sound)
 {
 	std::cout << "Cat Constructor called" << std::endl;
+	_brain = new Brain();
 }
 
 Cat::~Cat(void)
@@ -44,5 +45,18 @@ Cat &Cat::operator=(Cat &ToCopy)
 	_type = ToCopy._type;
 	_sound = ToCopy._sound;
 	_brain = ToCopy._brain;
+	return (*this);
+}
+
+Brain *Cat::getBrain(void) const
+{
+	return (_brain);
+}
+
+Animal	&Cat::operator = (Animal &toCopy)
+{
+	_type = toCopy.getType();
+	_sound = toCopy.getSound();
+	*_brain = *toCopy.getBrain();
 	return (*this);
 }

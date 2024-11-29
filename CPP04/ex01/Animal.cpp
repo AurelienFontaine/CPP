@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:20:59 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/29 15:00:43 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/30 00:17:00 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,9 @@ void Animal::makeSound(void) const
 std::string Animal::getType(void) const
 {
 	return (_type);
+}
+
+std::string Animal::getSound(void) const
+{
+	return (_sound);
 }

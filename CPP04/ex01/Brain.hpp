@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:34:48 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/29 18:30:44 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/29 23:24:20 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Brain
     public :
         Brain(void);
         Brain(Brain &Tocopy);
-        Brain& operator=(std::string &Tocopy);
+        Brain& operator=(Brain &Tocopy);
         ~Brain(void);
 		
         std::string _ideas[100];

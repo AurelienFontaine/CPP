@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:20:57 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/29 18:17:56 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/30 00:17:53 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ class Animal
 	public :
 		Animal(void);
 		Animal(std::string type, std::string sound);
-		virtual ~Animal(void);
 		Animal(Animal &ToCopy);
+		virtual ~Animal(void);
+		
 		Animal&	operator=(Animal &ToCopy);
 
 		std::string getType(void) const;
+		std::string	getSound(void) const;
 		void makeSound(void) const;
+		virtual Brain *getBrain(void) const;
 };
 
 #endif

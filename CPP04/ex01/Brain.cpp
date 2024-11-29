@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:29:03 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/29 18:30:28 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/29 23:24:10 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ Brain::Brain(Brain &Tocopy)
 		*this = Tocopy;
 }
 
-Brain& Brain::operator=(std::string &Tocopy)
+Brain	&Brain::operator = (Brain &ToCopy)
 {
-    return(*this);
+	for (int i = 0; i < 100; i++)
+		_ideas[i] = ToCopy._ideas[i];
+	return (*this);
 }
+
         
 Brain::~Brain(void)
 {   

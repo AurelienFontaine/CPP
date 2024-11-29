@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:29:19 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/29 18:24:59 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/30 00:15:07 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ class Dog : public Animal
 		Dog(Dog &ToCopy);
 		~Dog(void);
 		
+		Animal &operator = (Animal &toCopy);
 		Dog&	operator=(Dog &ToCopy);
+		
+		virtual Brain *getBrain(void) const;
 
 };
 
