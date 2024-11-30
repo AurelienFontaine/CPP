@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:20:57 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 00:17:53 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/30 01:00:24 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Animal
 		std::string	getSound(void) const;
 		void makeSound(void) const;
 		virtual Brain *getBrain(void) const;
+		// virtual Brain *getBrain(void) const = 0; Exo2
 };
 
 #endif
