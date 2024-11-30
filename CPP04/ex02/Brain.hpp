@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 13:13:09 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/28 13:13:23 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 14:55:12 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 17:21:41 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WrongAnimal_HPP
-# define WrongAnimal_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-# include <string.h>
 # include <iostream>
-# include "Animal.hpp"
 
-class WrongAnimal : public Animal
+class Brain
 {
-	protected :
-		std::string _type;
-	public :
-		WrongAnimal(void);
-		WrongAnimal(std::string Type);
-		~WrongAnimal(void);
-		WrongAnimal(const WrongAnimal &ToCopy);
-		WrongAnimal&	operator=(const WrongAnimal &ToCopy);
+	protected:
 
-		void makesound(std::string type);
+	public:
+		Brain(void);
+		Brain(Brain &toCopy);
+		~Brain(void);
+
+		Brain &operator = (Brain &toCopy);
+
+		std::string	ideas[100];
 };
 
 #endif

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:44 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 16:01:46 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/28 13:11:19 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/29 14:23:09 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef Cat_HPP
+# define Cat_HPP
 
+# include <string.h>
+# include <iostream>
 # include "Animal.hpp"
-# include "Brain.hpp"
 
-class Dog : public Animal
+class Cat : public Animal
 {
-	private:
-		Brain	*_brain;
-
-	public:
-		Dog(void);
-		Dog(std::string type, std::string sound);
-		Dog(Dog &toCopy);
-		~Dog(void);
-
-		Animal &operator = (Animal &toCopy);
-		Dog	&operator = (Dog &toCopy);
-
-		virtual Brain *getBrain(void) const;
+	public :
+		Cat(void);
+		Cat(std::string type, std::string sound);
+		~Cat(void);
+		Cat(Cat &ToCopy);
+		
+		Cat&	operator=(Cat &ToCopy);
 };
 
 #endif

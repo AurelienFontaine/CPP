@@ -1,49 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:39 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 16:01:41 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 14:55:05 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 17:11:01 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog(void) : Animal()
+Cat::Cat(void)
 {
-	std::cout << "Dog default constructor called " << std::endl;
-	_type = "Dog"; 
-	_sound = "Wouaf";
+	std::cout << "Cat default constructor called " << std::endl;
+	_type = "Cat";
+	_sound = "Miaouu";
 	_brain = new Brain();
 	return ;
 }
 
-Dog::Dog(std::string type, std::string sound) : Animal(type, sound)
+Cat::Cat(std::string type, std::string sound) : Animal(type, sound)
 {
-	std::cout << "Dog constructor called " << std::endl;
-	_brain = new Brain();
+	std::cout << "Cat "<< _type << " constructor called " << std::endl;
 	return ;
 }
 
-Dog::Dog(Dog &toCopy)
+
+Cat::Cat(Cat &toCopy)
 {
-	std::cout << "Dog copy constructor called " << std::endl;
+	std::cout << "Cat copy constructor called " << std::endl;
 	if (this != &toCopy)
 		*this = toCopy;
 	return ;
 }
 
-Dog::~Dog(void)
+Cat::~Cat(void)
 {
-	std::cout << "Dog destructor called " << std::endl;
+	std::cout << "Cat destructor called " << std::endl;
 	delete _brain;
 	return ;
 }
 
-Dog	&Dog::operator = (Dog &toCopy)
+Cat	&Cat::operator = (Cat &toCopy)
 {
 	*_brain = *toCopy._brain;
 	_type = toCopy._type;
@@ -51,15 +51,21 @@ Dog	&Dog::operator = (Dog &toCopy)
 	return (*this);
 }
 
-Brain *Dog::getBrain(void) const
+Brain *Cat::getBrain(void) const
 {
 	return (_brain);
 }
 
-Animal	&Dog::operator = (Animal &toCopy)
+Animal	&Cat::operator = (Animal &toCopy)
 {
 	_type = toCopy.getType();
 	_sound = toCopy.getSound();
 	*_brain = *toCopy.getBrain();
 	return (*this);
 }
+
+void	Cat::makeSound(void) const
+{
+	std::cout << _sound << std::endl;
+}
+

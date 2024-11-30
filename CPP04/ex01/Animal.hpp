@@ -5,37 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 12:20:57 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 01:00:24 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 16:01:17 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 16:13:53 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-# include <string.h>
 # include <iostream>
-
-#include "Brain.hpp"
+# include "Brain.hpp"
 
 class Animal
 {
-	protected :
-		std::string _type;
-		std::string _sound;
-	public :
+	protected:
+		std::string	_type;
+		std::string	_sound;
+
+	public:
 		Animal(void);
 		Animal(std::string type, std::string sound);
-		Animal(Animal &ToCopy);
+		Animal(Animal &toCopy);
 		virtual ~Animal(void);
-		
-		Animal&	operator=(Animal &ToCopy);
 
-		std::string getType(void) const;
+		virtual Animal &operator = (Animal &toCopy);
+
+		std::string	getType(void) const;
 		std::string	getSound(void) const;
-		void makeSound(void) const;
-		virtual Brain *getBrain(void) const;
-		// virtual Brain *getBrain(void) const = 0; Exo2
+		virtual void		makeSound(void) const;
+		virtual Brain		*getBrain(void) const = 0;
 };
 
 #endif

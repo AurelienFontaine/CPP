@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 12:20:57 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/28 13:04:45 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 14:55:00 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 17:11:12 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
 
-# include <string.h>
-# include <iostream>
+#ifndef CAT_HPP
+# define CAT_HPP
 
-class Animal
+# include "Animal.hpp"
+# include "Brain.hpp"
+
+class Cat : public Animal
 {
-	protected :
-		std::string _type;
-	public :
-		Animal(void);
-		Animal(std::string Type);
-		~Animal(void);
-		Animal(const Animal &ToCopy);
-		Animal&	operator=(const Animal &ToCopy);
+	private:
+		Brain	*_brain;
 
-		void makesound(std::string type);
+	public:
+		Cat(void);
+		Cat(Cat &toCopy);
+		~Cat(void);
+
+		Animal &operator = (Animal &toCopy);
+		Cat &operator = (Cat &toCopy);
+		Cat(std::string type, std::string sound);
+		void makeSound(void) const;
+		virtual Brain *getBrain(void) const;
 };
 
 #endif

@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 13:13:29 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/28 13:13:44 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 14:54:48 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 17:04:50 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WrongCat_HPP
-# define WrongCat_HPP
 
-# include <string.h>
-# include <iostream>
+#ifndef DOG_HPP
+# define DOG_HPP
+
 # include "Animal.hpp"
+# include "Brain.hpp"
 
-class WrongCat : public Animal
+class Dog : public Animal
 {
-	protected :
-		std::string _type;
-	public :
-		WrongCat(void);
-		WrongCat(std::string Type);
-		~WrongCat(void);
-		WrongCat(const WrongCat &ToCopy);
-		WrongCat&	operator=(const WrongCat &ToCopy);
+	private:
+		Brain	*_brain;
 
-		void makesound(std::string type);
+	public:
+		Dog(void);
+		Dog(Dog &toCopy);
+		~Dog(void);
+		Dog(std::string type, std::string sound);
+		Animal &operator = (Animal &toCopy);
+		Dog	&operator = (Dog &toCopy);
+
+		void makeSound(void) const;
+		virtual Brain *getBrain(void) const;
 };
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 12:20:51 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 00:15:55 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 16:01:31 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 16:01:33 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,40 @@
 
 Cat::Cat(void) : Animal()
 {
+	std::cout << "Cat default constructor called " << std::endl;
 	_type = "Cat";
 	_sound = "Miaouu";
 	_brain = new Brain();
-	std::cout << "Cat Default constructor called" << std::endl;
+	return ;
 }
 
 Cat::Cat(std::string type, std::string sound) : Animal(type, sound)
 {
-	std::cout << "Cat Constructor called" << std::endl;
+	std::cout << "Cat constructor called " << std::endl;
 	_brain = new Brain();
+	return ;
+}
+
+Cat::Cat(Cat &toCopy)
+{
+	std::cout << "Cat copy constructor called " << std::endl;
+	if (this != &toCopy)
+		*this = toCopy;
+	return ;
 }
 
 Cat::~Cat(void)
 {
+	std::cout << "Cat destructor called " << std::endl;
 	delete _brain;
-	std::cout << "Cat Destructor called" << std::endl;
+	return ;
 }
 
-Cat::Cat(Cat &ToCopy) : Animal(ToCopy._sound, ToCopy._type)
+Cat	&Cat::operator = (Cat &toCopy)
 {
-	std::cout << "Cat Copy contructor called" << std::endl;
-	if (this != &ToCopy)
-		*this = ToCopy;
-}
-
-Cat &Cat::operator=(Cat &ToCopy) 
-{
-	std::cout << "Cat Copy assignment operator called" << std::endl;
-	_type = ToCopy._type;
-	_sound = ToCopy._sound;
-	_brain = ToCopy._brain;
+	*_brain = *toCopy._brain;
+	_type = toCopy._type;
+	_sound = toCopy._sound;
 	return (*this);
 }
 

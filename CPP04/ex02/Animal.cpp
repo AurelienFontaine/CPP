@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:09 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 16:04:21 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 14:55:27 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 16:32:22 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@ Animal::Animal(void) : _type("Default type"), _sound("Default sound")
 Animal::Animal(std::string type, std::string sound) : _type(type), _sound(sound)
 {
 	std::cout << "Animal "<< _type << " constructor called " << std::endl;
-	return ;
-}
-
-Animal::Animal(Animal &toCopy)
-{
-	std::cout << "Animal copy constructor called " << std::endl;
-	if (this != &toCopy)
-		*this = toCopy;
 	return ;
 }
 

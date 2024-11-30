@@ -6,41 +6,49 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:20:59 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/28 13:05:43 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:00:43 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "Animal.hpp"
 
-Animal::Animal(void)
+Animal::Animal(void) : _type("Default type"), _sound("Default sound")
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Animal Default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string Type) : _type(Type)
+Animal::Animal(std::string type, std::string sound) : _type(type), _sound(sound)
 {
-	std::cout << "Constructor called" << std::endl;
+	std::cout << "Animal " << _type << " Constructor called" << std::endl;
+}
+
+Animal::Animal(Animal &ToCopy)
+{
+	std::cout << "Animal Copy contructor called" << std::endl;
+	if (this != &ToCopy)
+		*this = ToCopy;
+	return ;
 }
 
 Animal::~Animal(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Animal Destructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &ToCopy)
+Animal &Animal::operator=(Animal &ToCopy) 
 {
-	std::cout << "Copy contructor called" << std::endl;
-	*this = ToCopy;
-}
-
-Animal &Animal::operator=(const Animal &ToCopy) 
-{
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Animal Copy assignment operator called" << std::endl;
 	_type = ToCopy._type;
+	_sound = ToCopy._sound;
 	return (*this);
 }
 
-void Animal::makesound(std::string type)
+void Animal::makeSound(void) const
 {
-	std::cout << "" << std::endl;
+	std::cout << _sound << std::endl;
+}
+
+std::string Animal::getType(void) const
+{
+	return (_type);
 }

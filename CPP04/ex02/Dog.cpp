@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:39 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 16:01:41 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 14:54:54 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 17:05:16 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "Dog.hpp"
 
-Dog::Dog(void) : Animal()
+Dog::Dog(void)
 {
 	std::cout << "Dog default constructor called " << std::endl;
 	_type = "Dog"; 
@@ -23,8 +24,7 @@ Dog::Dog(void) : Animal()
 
 Dog::Dog(std::string type, std::string sound) : Animal(type, sound)
 {
-	std::cout << "Dog constructor called " << std::endl;
-	_brain = new Brain();
+	std::cout << "Dog "<< _type << " constructor called " << std::endl;
 	return ;
 }
 
@@ -62,4 +62,9 @@ Animal	&Dog::operator = (Animal &toCopy)
 	_sound = toCopy.getSound();
 	*_brain = *toCopy.getBrain();
 	return (*this);
+}
+
+void	Dog::makeSound(void) const
+{
+	std::cout << _sound << std::endl;
 }

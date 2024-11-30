@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 13:11:19 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/28 13:12:44 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/28 12:29:19 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/29 13:56:12 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Cat_HPP
-# define Cat_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-# include <string.h>
-# include <iostream>
 # include "Animal.hpp"
 
-class Cat : public Animal
+class Dog : public Animal
 {
-	protected :
-		std::string _type;
 	public :
-		Cat(void);
-		Cat(std::string Type);
-		~Cat(void);
-		Cat(const Cat &ToCopy);
-		Cat&	operator=(const Cat &ToCopy);
+		Dog(void);
+		Dog(std::string type, std::string sound);
+		Dog(Dog &ToCopy);
+		~Dog(void);
+		
+		Dog&	operator=(Dog &ToCopy);
 
-		void makesound(std::string type);
 };
 
 #endif

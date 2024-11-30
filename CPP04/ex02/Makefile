@@ -1,4 +1,4 @@
-NAME		=	Brains
+NAME		=	Instanciable
 
 OBJ_DIR		=	objs
 SRC_DIR		=	$(shell find . -type d)
@@ -8,13 +8,15 @@ vpath %.cpp $(foreach dir, $(SRC_DIR), $(dir):)
 HEADER		=	Animal.hpp		\
 				Dog.hpp			\
 				Cat.hpp			\
-				Brain.hpp
+				Brain.hpp		\
+
 
 SRCS	 	=	main.cpp		\
 				Animal.cpp		\
 				Dog.cpp			\
 				Cat.cpp			\
-				Brain.cpp
+				Brain.cpp		\
+
 
 OBJS		=	$(SRCS:%.cpp=${OBJ_DIR}/%.o)
 
