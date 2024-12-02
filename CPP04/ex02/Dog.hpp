@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 14:54:48 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 17:04:50 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 19:03:09 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 19:03:10 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef DOG_HPP
 # define DOG_HPP
@@ -19,19 +18,19 @@
 
 class Dog : public Animal
 {
-	private:
+    private:
 		Brain	*_brain;
-
 	public:
-		Dog(void);
-		Dog(Dog &toCopy);
-		~Dog(void);
-		Dog(std::string type, std::string sound);
-		Animal &operator = (Animal &toCopy);
-		Dog	&operator = (Dog &toCopy);
+		Dog();
+		Dog(std::string type);
+		Dog(Dog &copy);
+		~Dog();
 
-		void makeSound(void) const;
+		Dog	&operator=(Dog &copy);
+
 		virtual Brain *getBrain(void) const;
+
+		void	makeSound() const;
 };
 
 #endif

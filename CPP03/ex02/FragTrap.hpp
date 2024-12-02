@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:44:52 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/26 17:05:06 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:13:06 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class FragTrap : public ClapTrap
 
 		FragTrap& operator = (const FragTrap &ToCopy);
 		
+		void attack(const std::string& target);
 		void highFivesGuys();
 };
 

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 14:55:12 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 17:21:41 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 19:02:54 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 19:02:55 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@
 
 class Brain
 {
-	protected:
+	private :
+		std::string	_ideas[100];
 
-	public:
-		Brain(void);
-		Brain(Brain &toCopy);
-		~Brain(void);
+	public :
+		Brain();
+		Brain(const Brain &src );
+		~Brain();
 
-		Brain &operator = (Brain &toCopy);
+		Brain	&operator=(const Brain &copy);
 
-		std::string	ideas[100];
+		std::string getIdea(int index) const;
+
+		void setIdea(int index, std::string idea);
 };
 
 #endif

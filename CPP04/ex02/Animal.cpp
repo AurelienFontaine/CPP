@@ -5,50 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 14:55:27 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 16:32:22 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 19:02:44 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 19:02:45 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal(void) : _type("Default type"), _sound("Default sound")
-{
-	std::cout << "Animal default constructor called " << std::endl;
-	return ;
+Animal::Animal() : _type("Animal"){
+	std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type, std::string sound) : _type(type), _sound(sound)
-{
-	std::cout << "Animal "<< _type << " constructor called " << std::endl;
-	return ;
+Animal::Animal(std::string type) : _type(type){
+	std::cout << "Animal constructor called" << std::endl;
 }
 
-Animal::~Animal(void)
+Animal::Animal(Animal &copy)
 {
-	std::cout << "Animal destructor called " << std::endl;
-	return ;
+	std::cout << "Animal Copy constructor called" << std::endl;
+	*this = copy;
+	return;
 }
 
-Animal	&Animal::operator = (Animal &toCopy)
-{
-	_type = toCopy._type;
-	_sound = toCopy._sound;
-	return (*this);
+Animal::~Animal(){
+	std::cout << "Animal destructor called" << std::endl;
 }
 
-std::string Animal::getType(void) const
-{
-	return (_type);
+Animal	&Animal::operator=(Animal &copy){
+	this->_type = copy.getType();
+	return(*this);
 }
 
-std::string Animal::getSound(void) const
+std::ostream	&operator<<(std::ostream &ostream, const Animal &instance)
 {
-	return (_sound);
+	ostream << instance.getType();;
+	return ostream;
 }
 
-void	Animal::makeSound(void) const
-{
-	std::cout << _sound << std::endl;
+
+const std::string Animal::getType() const{
+	return (this->_type);
 }
 
+void	Animal:: makeSound() const{
+	std::cout << _type << " : Animal Sound" <<std::endl;
+}

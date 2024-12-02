@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 14:55:00 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 17:11:12 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 19:03:02 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 19:03:03 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CAT_HPP
 # define CAT_HPP
@@ -19,19 +18,19 @@
 
 class Cat : public Animal
 {
-	private:
+    private:
 		Brain	*_brain;
-
 	public:
-		Cat(void);
-		Cat(Cat &toCopy);
-		~Cat(void);
+		Cat();
+		Cat(std::string type);
+		Cat(Cat &copy);
+		~Cat();
 
-		Animal &operator = (Animal &toCopy);
-		Cat &operator = (Cat &toCopy);
-		Cat(std::string type, std::string sound);
-		void makeSound(void) const;
+		Cat	&operator=(Cat &copy);
+
 		virtual Brain *getBrain(void) const;
+
+		void	makeSound() const;
 };
 
 #endif

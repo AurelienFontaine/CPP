@@ -6,11 +6,16 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:49:22 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/26 16:10:50 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/28 09:53:53 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(void) : _Name("Default"), _hit_points(10), _nrg_points(10), _att_dmg(0)
+{
+	std::cout << "Claptrap Default is created" << std::endl;	
+}
 
 ClapTrap::ClapTrap(std::string Name) : _Name(Name), _hit_points(10), _nrg_points(10), _att_dmg(0)
 {
@@ -59,21 +64,25 @@ void ClapTrap::attack(const std::string& target)
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (amount > 2147483647)
-			std::cout << "Can't take this amount" << std::endl;
+			std::cout << "Can't take this amount of damage" << std::endl;
 	else if (amount >= static_cast<unsigned>(_hit_points))
+	{
 		_hit_points = 0;
+		std::cout << "ClapTrap " << _Name << " lost all his HP !"<< std::endl;
+	}
 	else
 	{
 		_hit_points -= amount;
 		std::cout << "ClapTrap " << _Name << " take " << amount << " dammage" << std::endl;
-		
 	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_hit_points == 0 || _nrg_points == 0)
-		std::cout << "Nothing can be done" << std::endl;
+		std::cout << "Nothing can be done, no more Energie or HP" << std::endl;
+	if ( _hit_points == 10 )
+		std::cout << "Can't repair, already at max HP" << std::endl;
 	else
 	{
 		if (amount > 2147483647)
@@ -81,8 +90,16 @@ void ClapTrap::beRepaired(unsigned int amount)
 		else 
 		{
 			_nrg_points -= 1;
-			_hit_points += amount;
-			std::cout << "ClapTrap " << _Name << " repairs itself for " << amount << " points of damage !" << std::endl;	
+			if (_hit_points + amount > 10)
+			{
+				_hit_points = 10;
+				std::cout << "ClapTrap " << _Name << " repairs itself to max Hit Points (10) !" << std::endl;
+			}
+			else 
+			{
+				_hit_points += amount;
+				std::cout << "ClapTrap " << _Name << " repairs itself for " << amount << " points of damage !" << std::endl;	
+			}
 		}
 	}
 }

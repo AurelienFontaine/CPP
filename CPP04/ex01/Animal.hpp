@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:17 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 16:13:53 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 19:01:27 by afontain          #+#    #+#             */
+/*   Updated: 2024/12/01 12:28:25 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@
 # include <iostream>
 # include "Brain.hpp"
 
+
 class Animal
 {
-	protected:
+	protected :
 		std::string	_type;
-		std::string	_sound;
+	public :
+		Animal();
+		Animal(std::string type);
+		Animal(Animal &copy);
+		virtual ~Animal();
 
-	public:
-		Animal(void);
-		Animal(std::string type, std::string sound);
-		Animal(Animal &toCopy);
-		virtual ~Animal(void);
+		const std::string getType() const;
 
-		virtual Animal &operator = (Animal &toCopy);
+		virtual Animal	&operator=(Animal &copy);
 
-		std::string	getType(void) const;
-		std::string	getSound(void) const;
-		virtual void		makeSound(void) const;
-		virtual Brain		*getBrain(void) const = 0;
+		virtual	void	makeSound() const;
 };
+
+std::ostream	&operator<<(std::ostream &ostream, const Animal &instance);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:49:27 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/26 16:11:03 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:33:10 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class ClapTrap
 		int 		_nrg_points;
 		int 		_att_dmg;
 	public:
+		ClapTrap(void);
 		ClapTrap(std::string ClapTrap);
 		~ClapTrap();
 		ClapTrap(const ClapTrap &ToCopy);

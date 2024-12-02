@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:35 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 16:01:37 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 19:01:41 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 19:40:25 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 
 class Cat : public Animal
 {
-	private:
+    private:
 		Brain	*_brain;
-
 	public:
-		Cat(void);
-		Cat(std::string type, std::string sound);
-		Cat(Cat &toCopy);
-		~Cat(void);
+		Cat();
+		Cat(std::string type);
+		Cat(Cat &copy);
+		~Cat();
 
-		Animal &operator = (Animal &toCopy);
-		Cat &operator = (Cat &toCopy);
+		Cat	&operator=(Cat &copy);
 
 		virtual Brain *getBrain(void) const;
+
+		void	makeSound() const;
 };
 
 #endif

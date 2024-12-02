@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:44 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 16:01:46 by afontain         ###   ########.fr       */
+/*   Created: 2024/11/30 19:01:48 by afontain          #+#    #+#             */
+/*   Updated: 2024/11/30 19:40:22 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 
 class Dog : public Animal
 {
-	private:
+    private:
 		Brain	*_brain;
-
 	public:
-		Dog(void);
-		Dog(std::string type, std::string sound);
-		Dog(Dog &toCopy);
-		~Dog(void);
 
-		Animal &operator = (Animal &toCopy);
-		Dog	&operator = (Dog &toCopy);
+		Dog();
+		Dog(std::string type);
+		Dog(Dog &copy);
+		~Dog();
+
+		Dog	&operator=(Dog &copy);
 
 		virtual Brain *getBrain(void) const;
+
+		void	makeSound() const;
 };
 
 #endif

@@ -1,47 +1,33 @@
-NAME		=	Brains
 
-OBJ_DIR		=	objs
-SRC_DIR		=	$(shell find . -type d)
+NAME	=	Brains
+CFLAGS	=	--std=c++98 -Wall -Wextra -Werror -g3
+CC		=	c++
 
-vpath %.cpp $(foreach dir, $(SRC_DIR), $(dir):)
+INCLUDES	=	Animal.hpp\
+				Cat.hpp\
+				Dog.hpp\
+				Brain.hpp\
 
-HEADER		=	Animal.hpp		\
-				Dog.hpp			\
-				Cat.hpp			\
-				Brain.hpp
+SRC_FILES	=	main.cpp\
+				Animal.cpp\
+				Cat.cpp\
+				Dog.cpp\
+				Brain.cpp\
 
-SRCS	 	=	main.cpp		\
-				Animal.cpp		\
-				Dog.cpp			\
-				Cat.cpp			\
-				Brain.cpp
+all: ${NAME}
 
-OBJS		=	$(SRCS:%.cpp=${OBJ_DIR}/%.o)
+${NAME}: ${SRC_FILES} ${INCLUDES}
+	${CC} ${CFLAGS} ${SRC_FILES} -o ${NAME}
 
-RM			=	rm -rf
+%.o: %.cpp
+	%{CC} ${CFLAGS} $< -o $@
 
-CC			=	c++
+clean :
+	rm -rf *.o
 
-CFLAGS		=	-Werror -Wall -Wextra -std=c++98 -g3
+fclean: clean
+	rm -f ${NAME}
 
-all:	${NAME}
+re: fclean all
 
-$(NAME): ${OBJS} ${HEADER}
-		${CC} ${CFLAGS} ${OBJS} -o ${NAME}
-
-$(OBJ_DIR)/%.o: %.cpp ${HEADER} | $(OBJ_DIR)
-		$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR) :
-		mkdir -p $@
-
-clean:
-		${RM} $(OBJ_DIR)
-
-fclean:		clean
-		${RM} ${NAME}
-
-re:			fclean
-		$(MAKE) all
-
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re

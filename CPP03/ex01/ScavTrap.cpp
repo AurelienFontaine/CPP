@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:49:22 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/26 17:49:00 by afontain         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:06:01 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void ScavTrap::attack(const std::string &target)
 		std::cout << "Nothing can be done" << std::endl;
 	else
 	{
-		_nrg_points -= 1;
-		std::cout << "ScavTrap " << _Name << " rush into " << target << ", stabb him and dealt " << _att_dmg << " points of damage!" << std::endl;
+		_nrg_points -= 1;	
+		std::cout << "ScavTrap " << _Name << " bite " << target << ", causing " << _att_dmg << " of pain damage!" << std::endl;
 	}
 }
 

@@ -1,61 +1,37 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/22 00:06:34 by afontain          #+#    #+#              #
-#    Updated: 2024/11/30 16:05:18 by afontain         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME	=	Animals
+CFLAGS	=	--std=c++98 -Wall -Wextra -Werror -g3
+CC		=	c++
 
-NAME		=	Animals
 
-OBJ_DIR		=	objs
-SRC_DIR		=	$(shell find . -type d)
+INCLUDES	=	Animal.hpp\
+				Cat.hpp\
+				Dog.hpp\
+				WrongAnimal.hpp\
+				WrongCat.hpp
 
-vpath %.cpp $(foreach dir, $(SRC_DIR), $(dir):)
 
-HEADER		=   Animal.hpp \
-				Cat.hpp \
-				Dog.hpp \
-				WrongAnimal.hpp \
-				WrongCat.hpp \
-				
-SRCS	 	=	main.cpp \
-				Animal.cpp \
-				Cat.cpp \
-				Dog.cpp \
-				WrongCat.cpp \
-				WrongAnimal.cpp \
+SRC_FILES	=	main.cpp\
+				Animal.cpp\
+				Cat.cpp\
+				Dog.cpp\
+				WrongAnimal.cpp\
+				WrongCat.cpp
 
-OBJS		=	$(SRCS:%.cpp=${OBJ_DIR}/%.o)
 
-RM			=	rm -rf
+all: ${NAME}
 
-CC			=	c++
+${NAME}: ${SRC_FILES} ${INCLUDES}
+	${CC} ${CFLAGS} ${SRC_FILES} -o ${NAME}
 
-CFLAGS		=	-Werror -Wall -Wextra -std=c++98 -g3
+%.o: %.cpp
+	%{CC} ${CFLAGS} $< -o $@
 
-all:	${NAME}
+clean :
+	rm -rf *.o
 
-$(NAME): ${OBJS} ${HEADER}
-		${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+fclean: clean
+	rm -f ${NAME}
 
-$(OBJ_DIR)/%.o: %.cpp ${HEADER} | $(OBJ_DIR)
-		$(CC) $(CFLAGS) -c $< -o $@
+re: fclean all
 
-$(OBJ_DIR) :
-		mkdir -p $@
-
-clean:
-		${RM} $(OBJ_DIR)
-
-fclean:		clean
-		${RM} ${NAME}
-
-re:			fclean
-		$(MAKE) all
-
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re

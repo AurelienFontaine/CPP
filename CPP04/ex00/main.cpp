@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:21:02 by afontain          #+#    #+#             */
-/*   Updated: 2024/11/30 17:09:35 by afontain         ###   ########.fr       */
+/*   Updated: 2024/12/01 12:21:07 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,27 @@
 
 int main()
 {
-	// Animal	first("Chieng", "WOOOOF");
-	// Animal	second = first;
-	// Animal	third("Cat", "MIAOUMIAOU");
-	// third = first;
+	std::cout << "-------" << std::endl;
+	Animal	first("Chieng", "WOOOOF");
+	Animal	second = first;
+	Animal	third("Cat", "MIAOUMIAOU");
+	third = first;
+	std::cout << "-------" << std::endl;
 	
 	const Animal* meta = new Animal("TEST", "NUIT");
 	const Animal* dog = new Dog();
 	const Animal* cat = new Cat();
 
+	std::cout << "-------" << std::endl;
 	std::cout << cat->getType() << " " << std::endl;
 	cat->makeSound();
-	std::cout << std::endl;
+	std::cout << "-------" << std::endl;
 	std::cout << dog->getType() << " " << std::endl;
 	dog->makeSound();
-	std::cout << std::endl;
+	std::cout << "-------" << std::endl;
 	std::cout << meta->getType() << " " << std::endl;
 	meta->makeSound();
-	std::cout << std::endl;
+	std::cout << "-------" << std::endl;
 	delete meta;
 	std::cout << std::endl;
 	delete dog;

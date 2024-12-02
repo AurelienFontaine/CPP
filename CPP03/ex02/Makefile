@@ -6,7 +6,7 @@
 #    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 00:06:34 by afontain          #+#    #+#              #
-#    Updated: 2024/11/26 16:43:57 by afontain         ###   ########.fr        #
+#    Updated: 2024/11/27 16:33:37 by afontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ HEADER		=   FragTrap.hpp \
 
 SRCS	 	=	main.cpp \
 				ClapTrap.cpp \
-				ScavTrap.cpp \
 				FragTrap.cpp
 
 OBJS		=	$(SRCS:%.cpp=${OBJ_DIR}/%.o)
