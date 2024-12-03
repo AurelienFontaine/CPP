@@ -6,12 +6,11 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:47:13 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/03 13:24:15 by afontain         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:30:48 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _Name("Default"), _grade(75)
 {
@@ -97,4 +96,12 @@ void Bureaucrat::setGrade(unsigned int grade)
 unsigned int Bureaucrat::getGrade() const
 {
 	return (_grade);
+}
+
+void Bureaucrat::signForm()
+{
+	if (_sign == true)
+		std::cout << _Name << " signed " << "<Form>" << std::endl;
+	else 
+		std::cout << _Name << " couldn't sign " << "<Form>" << std::endl;
 }
