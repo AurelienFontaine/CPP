@@ -1,4 +1,4 @@
-NAME	=	Bureaucrat
+NAME	=	Intern
 CFLAGS	=	--std=c++98 -Wall -Wextra -Werror -g3
 CC		=	c++
 

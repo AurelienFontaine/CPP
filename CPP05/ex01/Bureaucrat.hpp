@@ -4,15 +4,18 @@
 
 #include <iostream>
 
+// #include "Form.hpp"
+
+class Form;
+
 class Bureaucrat
 {
 	private:
 		const std::string _Name;
-		unsigned int _grade;
-
+		int _grade;
 	public:
 		Bureaucrat();
-		Bureaucrat(const std::string name, unsigned int grade);
+		Bureaucrat(const std::string name, int grade);
 		Bureaucrat(Bureaucrat &toCopy);
 		const Bureaucrat &operator=(Bureaucrat &toCopy);
 		virtual ~Bureaucrat();
@@ -21,11 +24,10 @@ class Bureaucrat
 		void IncrementGrade();
 		void DecrementGrade();
 		std::string getName() const;
-		unsigned int getGrade() const;
+		int getGrade() const;
 		void setGrade(unsigned int grade);
-		void signForm();
+		void signForm(Form &F);
 
-	public:
 		class GradeTooHighException : public std::exception
 		{
 			public:

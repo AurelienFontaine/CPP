@@ -6,47 +6,59 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:45:55 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/03 14:28:09 by afontain         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:39:37 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+
+
+void test1()
+{
+	Bureaucrat Moi("Aurel", 100);
+	Form	Test("Formular", 200, 100);
+	std::cout << "Je passe par la" << std::endl;
+}
+
+void test2()
+{
+	Bureaucrat Moi("Orel", 75);
+	Form	Test("Formulareee", 200, 100);
+	std::cout << "Je passe par ici" << std::endl;
+}
 
 int main()
 {
 	try 
 	{
-        Bureaucrat Test1("Test1", 5);
-		
-        std::cout << Test1.getName() << " has grade " << Test1.getGrade() << std::endl;
-        Test1.IncrementGrade();
-        std::cout << Test1.getName() << " now has grade " << Test1.getGrade() << std::endl;
-
-        Test1.setGrade(1);
-        Test1.DecrementGrade();
-		std::cout << std::endl;
+		test1();
    	} 
-	catch (const Bureaucrat::GradeTooHighException &e)
+	catch (std::exception &e)
 	{
-		std::cout << std::endl;
-        std::cerr << "Catch 1 : " << e.what() << std::endl << std::endl;
+        std::cerr << "Catch 1 : " << e.what() << std::endl;
 	}
-	try
+	try 
 	{
-		Bureaucrat Test2("Test2", 100);
-		
-        std::cout << Test2.getName() << " has grade " << Test2.getGrade() << std::endl;
-        Test2.IncrementGrade();
-        std::cout << Test2.getName() << " now has grade " << Test2.getGrade() << std::endl;
-
-        Test2.setGrade(200); 
-        Test2.IncrementGrade();
-		std::cout << std::endl;
-	}
-	catch (const Bureaucrat::GradeTooLowException &e)
+		test2();
+   	} 
+	catch (std::exception &e)
 	{
-		std::cout << std::endl;
         std::cerr << "Catch 2 : " << e.what() << std::endl;
 	}
+	Form		F1("Formulaire pour redoubler", 149, 150);
+	Bureaucrat	B1("Aurel", 3);
+	Bureaucrat	B2("Robin", 150);
+
+	std::cout << B1 << std::endl;
+	std::cout << F1 << std::endl;
+
+	B1.signForm(F1);
+
+	std::cout << F1 << std::endl;
+
+	B2.signForm(F1);
+
+	std::cout << F1 << std::endl;
     return 0;
 }

@@ -6,18 +6,18 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:30:27 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/03 17:29:21 by afontain         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:19:26 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : _Name("Default"), _sign(false), _sgrade(1), _egrade(1)
+Form::Form() : _Name("Default"), _sgrade(1), _egrade(1), _sign(false)
 {
 	std::cout << "Default Form constructor called" << std::endl;
 }
 
-Form::Form(const std::string name, int sgrade, int egrade) : _Name(name), _sign(false), _sgrade(sgrade), _egrade(egrade)
+Form::Form(const std::string name, int sgrade, int egrade) : _Name(name), _sgrade(sgrade), _egrade(egrade), _sign(false)
 {
 	if (sgrade < 1 || egrade < 1)
 		throw (GradeTooHighException());
@@ -28,11 +28,15 @@ Form::Form(const std::string name, int sgrade, int egrade) : _Name(name), _sign(
 Form::Form(Form &toCopy) : _Name(toCopy._Name), _sgrade(toCopy._sgrade), _egrade(toCopy._egrade)
 {
 	std::cout << "Default Form constructor called" << std::endl;
+	if (this != &toCopy)
+		*this = toCopy;
 }
 
 const Form &Form::operator=(const Form &toCopy)
 {
-
+	std::cout << "Form Copy contructor called" << std::endl;
+	_sign = toCopy._sign;
+	return (*this);
 }
 
 Form::~Form()
@@ -40,10 +44,16 @@ Form::~Form()
 	std::cout << this->_Name << " Form destructor called" << std::endl;
 }
 
-int Form::beSigned(const Bureaucrat b) const
+void Form::beSigned(const Bureaucrat b)
 {
-	if (b._grade >_sgrade )
-		throw (GradeTooLowException);
+	if (b.getGrade() >_sgrade )
+		throw (GradeTooLowException());
+	_sign = true;
+}
+
+bool Form::getSign() const
+{
+	return (_sign);
 }
 
 int Form::getGradeSign() const
@@ -61,16 +71,16 @@ std::string Form::getName() const
 	return (_Name);
 }
 
-void Form::setSign(bool sign)
-{
-	_sign = sign;
-}
+// void Form::setSign(bool sign)
+// {
+// 	_sign = sign;
+// }
 
-std::ostream	&operator<<(std::ostream &ostream,  const Form &grade)
+std::ostream	&operator<<(std::ostream &ostream, Form &grade)
 {
 	ostream << grade.getName();
 	ostream << grade.getGradeExec();
 	ostream << grade.getGradeSign();
-	ostream << grade.beSigned();
+	ostream << grade.getSign();
 	return ostream;
 }

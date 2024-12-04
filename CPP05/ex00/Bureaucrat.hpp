@@ -8,13 +8,13 @@ class Bureaucrat
 {
 	private:
 		const std::string _Name;
-		unsigned int _grade;
+		int _grade;
 
 	public:
 		Bureaucrat();
-		Bureaucrat(const std::string name, unsigned int grade);
+		Bureaucrat(const std::string name, int grade);
 		Bureaucrat(Bureaucrat &toCopy);
-		const Bureaucrat &operator=(Bureaucrat &toCopy);
+		Bureaucrat &operator=(Bureaucrat &toCopy);
 		virtual ~Bureaucrat();
 
 		int checkGrade();
@@ -22,9 +22,8 @@ class Bureaucrat
 		void DecrementGrade();
 		std::string getName() const;
 		unsigned int getGrade() const;
-		void setGrade(unsigned int grade);
+		// void setGrade(unsigned int grade);
 
-	public:
 		class GradeTooHighException : public std::exception
 		{
 			public:
