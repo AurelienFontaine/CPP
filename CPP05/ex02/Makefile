@@ -1,13 +1,20 @@
-NAME	=	SRP
+NAME	=	AForm
 CFLAGS	=	--std=c++98 -Wall -Wextra -Werror -g3
 CC		=	c++
 
 
-INCLUDES	=	Bureaucrat.hpp
+INCLUDES	=	AForm.hpp \
+				Bureaucrat.hpp \
+				PresidentialPardonForm.hpp \
+				RobotomyRequestForm.hpp \
+				ShrubberyCreationForm.hpp 
 
 SRC_FILES	=	main.cpp \
-				Bureaucrat.cpp
-
+				AForm.cpp \
+				Bureaucrat.cpp \
+				PresidentialPardonForm.cpp \
+				RobotomyRequestForm.cpp \
+				ShrubberyCreationForm.cpp 
 all: ${NAME}
 
 ${NAME}: ${SRC_FILES} ${INCLUDES}
