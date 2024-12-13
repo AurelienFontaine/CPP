@@ -3,11 +3,20 @@ CFLAGS	=	--std=c++98 -Wall -Wextra -Werror -g3
 CC		=	c++
 
 
-INCLUDES	=	Bureaucrat.hpp
+INCLUDES	=	AForm.hpp \
+				Bureaucrat.hpp \
+				PresidentialPardonForm.hpp \
+				RobotomyRequestForm.hpp \
+				ShrubberyCreationForm.hpp \
+				Intern.hpp
 
 SRC_FILES	=	main.cpp \
-				Bureaucrat.cpp
-
+				AForm.cpp \
+				Bureaucrat.cpp \
+				PresidentialPardonForm.cpp \
+				RobotomyRequestForm.cpp \
+				ShrubberyCreationForm.cpp \
+				Intern.cpp
 all: ${NAME}
 
 ${NAME}: ${SRC_FILES} ${INCLUDES}
