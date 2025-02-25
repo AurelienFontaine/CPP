@@ -16,6 +16,7 @@ MAIN_INC	= -I$(INCS_DIR)
 
 SRCS_DIR	= ./srcs
 SRC =	$(SRCS_DIR)/main.cpp \
+		$(SRCS_DIR)/Mutant.cpp \
 		
 OBJS_DIR	= ./objs
 OBJS		= $(SRC:$(SRCS_DIR)/%.cpp=$(OBJS_DIR)/%.o)
