@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:23:01 by root              #+#    #+#             */
-/*   Updated: 2025/02/25 17:24:48 by root             ###   ########.fr       */
+/*   Updated: 2025/02/25 17:29:40 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ public:
     using reverse_iterator = typename std::deque<T>::reverse_iterator;
     using const_reverse_iterator = typename std::deque<T>::const_reverse_iterator;
     
-    iterator begin() { return this->c.begin(); }
-    iterator end() { return this->c.end(); }
-    const_iterator begin() const { return this->c.begin(); }
-    const_iterator end() const { return this->c.end(); }
-    reverse_iterator rbegin() { return this->c.rbegin(); }
-    reverse_iterator rend() { return this->c.rend(); }
-    const_reverse_iterator rbegin() const { return this->c.rbegin(); }
-    const_reverse_iterator rend() const { return this->c.rend(); }
+    iterator begin();
+    iterator end();
+    const_iterator begin() const;
+    const_iterator end() const;
+    reverse_iterator rbegin();
+    reverse_iterator rend();
+    const_reverse_iterator rbegin() const;
+    const_reverse_iterator rend() const;
 };
 
 #endif
