@@ -1,33 +1,48 @@
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef SCALAR_CONVERTER_HPP
+#define SCALAR_CONVERTER_HPP
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <exception>
+#include <iomanip>
 
-# include <iostream>
-# include <sstream>
-# include <string>
-# include <iomanip>
-# include <cmath>
-# include <limits.h>
-# include <float.h>
-
-class Scalar 
-{
-    private :
-
-
-                                Scalar(void);
-    public :
-                                Scalar(std::string str);
-                                Scalar(Scalar const &toCopy);
-                                Scalar &operator=(Scalar const &toCopy);
-                                ~Scalar();
-
-
-                void            setScalar(std::string string);
-                std::string     getScalar();
-
-                static int      convert(std::string output);   
+enum e_type {
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	SPECIAL,
+	OTHER
 };
-    
-std::ostream    &operator<<(std::ostream &flux, Scalar &rhs);
 
+class ScalarConverter {
+	public:
+		ScalarConverter();
+		virtual ~ScalarConverter() = 0;
+		ScalarConverter(const ScalarConverter &s);
+		ScalarConverter &operator=(const ScalarConverter &s);
+
+		static void			convert(std::string type);
+		
+		class WrongTypeException : public std::exception {
+			public:
+				const char	*what() const throw();
+		};
+	};
+
+	int				checkAlpha(std::string type);
+	int				isChar(const std::string &str);
+	int				isInt(const std::string &str);
+	int				isFloat(const std::string &str);
+	int				isDouble(const std::string &str);
+	int				isSpecial(const std::string &str);
+	e_type			findType(std::string type);
+	void			printConverted(e_type etype, std::string type);
+	void			fromChar(const std::string &str);
+	void			fromInt(const std::string &str);
+	void			fromFloat(const std::string &str);
+	void			fromDouble(const std::string &str);
+	void			fromSpecial(const std::string &str);
+	
+	// void			printType(e_type etype); //for test only
 #endif

@@ -14,12 +14,10 @@ _OK	= [\033[32mOK\033[0m]
 INCS_DIR	= ./Includes
 MAIN_INC	= -I$(INCS_DIR)
 
-SRCS_DIR	= ./Sources
-SRC =	$(SRCS_DIR)/Server.cpp \
-		$(SRCS_DIR)/User.cpp \
-		$(SRCS_DIR)/Utils.cpp \
+SRCS_DIR	= ./srcs
+SRC =	$(SRCS_DIR)/Data.cpp \
+		$(SRCS_DIR)/Serializer.cpp \
 		$(SRCS_DIR)/main.cpp \
-		$(SRCS_DIR)/Irssi_Code.cpp \
 
 		
 OBJS_DIR	= ./Objects
