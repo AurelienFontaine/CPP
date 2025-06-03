@@ -27,6 +27,7 @@ ${NAME}: ${SRC_FILES} ${INCLUDES}
 
 clean :
 	rm -rf *.o
+	rm -rf *_shrubbery
 
 fclean: clean
 	rm -f ${NAME}

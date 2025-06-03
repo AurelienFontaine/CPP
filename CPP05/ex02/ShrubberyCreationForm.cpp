@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:56:59 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/12 17:29:37 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:26:11 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,8 @@ void ShrubberyCreationForm::create_file() const
         std::cerr << "Erreur : Impossible de créer le fichier " << fileName << std::endl;
         return;
     }
-    // Écrire l'arbre ASCII dans le fichier
     file << "ASCII Trees" << std::endl;
-    // Fermer le fichier
+    // Ferme le fichier
     file.close();
 }
 

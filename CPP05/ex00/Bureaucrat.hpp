@@ -17,12 +17,11 @@ class Bureaucrat
 		Bureaucrat &operator=(Bureaucrat &toCopy);
 		virtual ~Bureaucrat();
 
-		int checkGrade();
+		// int checkGrade();
 		void IncrementGrade();
 		void DecrementGrade();
 		std::string getName() const;
 		unsigned int getGrade() const;
-		// void setGrade(unsigned int grade);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -39,7 +38,6 @@ class Bureaucrat
 				return ("The grade set is too low");
 			}
 		};
-
 };
 
 std::ostream	&operator<<(std::ostream &ostream, const Bureaucrat &instance);

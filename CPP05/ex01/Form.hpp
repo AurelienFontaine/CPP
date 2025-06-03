@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:30:24 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/04 17:38:33 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:25:53 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ class Form
 		{
 			public:
 			virtual const char* what() const throw(){
-				return ("The grade set is too high");
+				return ("The Form grade set is too high");
 			}
 		};
 		class GradeTooLowException : public std::exception
 		{
 			public:
 			virtual const char* what() const throw(){
-				return ("The grade set is too low");
+				return ("The Form grade set is too low");
 			}
 		};
 	

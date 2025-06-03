@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:45:55 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/12 17:37:38 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:48:32 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,31 @@
 
 void test1()
 {
-	Bureaucrat	B1("Aurel", 2);
+	try
 	{
-		ShrubberyCreationForm	ShrubberyCF("Form");
-		B1.signForm(ShrubberyCF);
-		std::cout << std::endl;
+		Bureaucrat	B1("Aurel", 50);
+		ShrubberyCreationForm	ShrubberyCF("Form1");
+		
 		std::cout << ShrubberyCF << std::endl;
-		std::cout << "--------------" << std::endl;
+		ShrubberyCF.execute(B1);
+		B1.signForm(ShrubberyCF);
+		
+		std::cout << std::endl;
+		
+		
+		std::cout << ShrubberyCF << std::endl;
 		ShrubberyCF.execute(B1);
 		std::cout << std::endl;
-		std::cout << "--------------" << std::endl;
 	}
+	catch (std::exception &e)
 	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat	B1("Benj", 40);
 		RobotomyRequestForm	RobotomyRF("Test2");
 
-		std::cout  << B1 << std::endl;
 		std::cout << std::endl;
 		std::cout << RobotomyRF << std::endl;
 
@@ -42,10 +52,15 @@ void test1()
 
 		RobotomyRF.execute(B1);
 		std::cout << std::endl;
-		std::cout << "--------------" << std::endl;
 	}
+	catch (std::exception &e)
 	{
-		PresidentialPardonForm	PresidentialPF("Aurel");
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat	B1("Robin", 2);
+		PresidentialPardonForm	PresidentialPF("Orel");
 
 		std::cout  << B1 << std::endl;
 		std::cout << PresidentialPF << std::endl;
@@ -56,13 +71,18 @@ void test1()
 		PresidentialPF.execute(B1);
 		std::cout << std::endl;
 	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 
 void test2()
 {
-	Bureaucrat	B1("Aurel", 100);
+	try
 	{
+		Bureaucrat	B1("Aurel", 100);
 		std::cout  << B1.getName() << " " << B1.getGrade() << std::endl;
 		ShrubberyCreationForm	ShrubberyCF("Test");
 
@@ -71,12 +91,16 @@ void test2()
 		B1.signForm(ShrubberyCF);
 		std::cout << std::endl;
 		std::cout << ShrubberyCF << std::endl;
-		std::cout << "--------------" << std::endl;
 		ShrubberyCF.execute(B1);
 		std::cout << std::endl;
-		std::cout << "--------------" << std::endl;
 	}
+	catch (std::exception &e)
 	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat	B1("Aurel", 100);
 		RobotomyRequestForm	RobotomyRF("Test");
 
 		std::cout  << B1 << std::endl;
@@ -88,9 +112,14 @@ void test2()
 
 		RobotomyRF.execute(B1);
 		std::cout << std::endl;
-		std::cout << "--------------" << std::endl;
 	}
+	catch (std::exception &e)
 	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat	B1("Aurel", 100);
 		PresidentialPardonForm	PresidentialPF("Test");
 
 		std::cout  << B1 << std::endl;
@@ -101,6 +130,10 @@ void test2()
 
 		PresidentialPF.execute(B1);
 		std::cout << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
 	}
 }
 

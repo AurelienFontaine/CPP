@@ -32,7 +32,7 @@ class Bureaucrat
 		{
 			public:
 			virtual const char* what() const throw(){
-				return ("The grade set is too high");
+				return ("The Bureaucrat grade set is too high");
 			}
 		};
 
@@ -40,7 +40,7 @@ class Bureaucrat
 		{
 			public:
 			virtual const char* what() const throw(){
-				return ("The grade set is too low");
+				return ("The Bureaucrat grade set is too low");
 			}
 		};
 

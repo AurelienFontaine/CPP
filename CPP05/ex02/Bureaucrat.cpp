@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:47:13 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/12 17:55:09 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:47:18 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ void Bureaucrat::signForm(AForm &AForm)
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << _Name << " Couldn't sign" << AForm.getName() << std::endl << e.what() << std::endl;
+		std::cout << _Name << " Couldn't execute" << AForm.getName() << std::endl << e.what() << std::endl;
 	}
 	if (AForm.getSign() == true)
-		std::cout << _Name << " SIGNED " << AForm.getName() << std::endl;
+		std::cout << _Name << " executed " << AForm.getName() << std::endl;
 }

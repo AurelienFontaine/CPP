@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:30:27 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/04 14:19:26 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:21:57 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Form::Form() : _Name("Default"), _sgrade(1), _egrade(1), _sign(false)
 
 Form::Form(const std::string name, int sgrade, int egrade) : _Name(name), _sgrade(sgrade), _egrade(egrade), _sign(false)
 {
+	std::cout <<  _Name << " Form constructor called" << std::endl;
 	if (sgrade < 1 || egrade < 1)
 		throw (GradeTooHighException());
 	if (sgrade > 150 || egrade > 150)
@@ -47,7 +48,9 @@ Form::~Form()
 void Form::beSigned(const Bureaucrat b)
 {
 	if (b.getGrade() >_sgrade )
+	{
 		throw (GradeTooLowException());
+	}
 	_sign = true;
 }
 

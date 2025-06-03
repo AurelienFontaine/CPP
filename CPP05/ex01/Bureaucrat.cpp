@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:47:13 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/04 17:14:47 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:24:57 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,17 @@ Bureaucrat::Bureaucrat() : _Name("Default"), _grade(75)
 // 	std::cout << "Bureaucrat constructor called" << std::endl;
 // }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _Name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _Name(name), _grade(grade)
 {
 	if (this->_grade < 1)
+	{
 		throw Bureaucrat::GradeTooHighException();
+	}
 	if (this->_grade > 150)
+	{
 		throw Bureaucrat::GradeTooLowException();
-	std::cout << name << " contructor called" << std::endl;
+	}
+	std::cout << name << " Bureaucrat contructor called" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -101,12 +105,17 @@ void Bureaucrat::signForm(Form &Form)
 {
 	try
 	{
+		if (Form.getSign())
+		{
+			std::cout << "Bureaucrat " << getName() << " try to sign " << Form.getName() << " but it's already signed !" << std::endl;
+			return ;
+		}
 		Form.beSigned(*this);
+		std::cout << _Name << " signed " << Form.getName() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << _Name << " signed " << Form.getName() << std::endl << e.what() << std::endl;
+		std::cout << _Name << " couldn't sign  " << Form.getName() << std::endl << e.what() << std::endl;
 	}
-	std::cout << _Name << " couldn't sign " << Form.getName() << std::endl;
 }
 

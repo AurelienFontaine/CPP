@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:56:52 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/12 16:32:06 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:16:38 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::Robotomized() const
 {
-	std::cout << "Drilling noises " << std::endl;
+	std::cout << "Drilling noises :" << std::endl;
 	int nbr;
 	nbr = std::rand();
 	if (nbr % 2 == 0)
-		std::cout << _target << "has been robotomized" << std::endl;
+		std::cout << _target << " has been robotomized" << std::endl;
 	else 
-		std::cout << _target << "robotomy failed" << std::endl;	
+		std::cout << _target << " robotomy failed :) " << std::endl;	
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const  &executor) const

@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:47:13 by afontain          #+#    #+#             */
-/*   Updated: 2024/12/04 16:38:19 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:46:11 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@ Bureaucrat::Bureaucrat() : _Name("Default"), _grade(75)
 	std::cout << "Default Bureaucrat constructor called" << std::endl;
 }
 
-// Bureaucrat::Bureaucrat(const std::string name,  int grade) : _Name(name), _grade(grade)
-// {
-// 	std::cout << "Bureaucrat constructor called" << std::endl;
-// }
-
-Bureaucrat::Bureaucrat(std::string name, int grade) : _Name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _Name(name), _grade(grade)
 {
 	if (_grade > 150)
 		throw GradeTooLowException();
@@ -60,21 +55,21 @@ std::ostream	&operator<<(std::ostream &ostream,  const Bureaucrat &grade)
 	return ostream;
 }
 
-int Bureaucrat::checkGrade()
-{
-	if (_grade < 1)
-		throw GradeTooHighException();
-	if (_grade > 150)
-		throw GradeTooLowException();
-	return (0);
-}
+// int Bureaucrat::checkGrade()
+// {
+// 	if (_grade < 1)
+// 		throw GradeTooHighException();
+// 	if (_grade > 150)
+// 		throw GradeTooLowException();
+// 	return (0);
+// }
 
 void Bureaucrat::DecrementGrade()
 {
 	if (_grade > 1)
 		_grade--;
-	else if (_grade == 1)
-		std::cout << _Name << " can't be downgrade" << std::endl;
+	// else if (_grade == 1)
+	// 	std::cout << _Name << " can't be downgrade" << std::endl;
 	else
 		throw GradeTooHighException();
 }
@@ -83,8 +78,8 @@ void Bureaucrat::IncrementGrade()
 {
 	if (_grade < 150)
 		_grade++;
-	else if (_grade == 150)
-		std::cout << _Name << " can't be upgraded" << std::endl;
+	// else if (_grade == 150)
+	// 	std::cout << _Name << " can't be upgraded" << std::endl;
 	else
 		throw GradeTooLowException();
 }
@@ -93,11 +88,6 @@ std::string Bureaucrat::getName() const
 {
 	return (_Name);
 }
-
-// void Bureaucrat::setGrade(unsigned int grade)
-// {
-// 	_grade = grade;
-// }
 
 unsigned int Bureaucrat::getGrade() const
 {
