@@ -24,9 +24,13 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &s){
 }
 
 void	ScalarConverter::convert(std::string type){
-	if (!checkAlpha(type))
-		throw ScalarConverter::WrongTypeException();
-	e_type etype = findType(type);
+	e_type etype;
+	// if (!checkAlpha(type) && type != "nan")
+	// 	throw ScalarConverter::WrongTypeException();
+	// if (type == "nan")
+	// 	etype = SPECIAL;
+	// else
+	etype = findType(type);
 	// printType(_etype); //for test purpose only
 	printConverted(etype, type);
 }
