@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 18:05:01 by afontain          #+#    #+#             */
-/*   Updated: 2025/06/27 18:05:35 by root             ###   ########.fr       */
+/*   Updated: 2025/06/28 15:27:50 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ private:
     void fordJohnsonV(std::vector<int> &vec);
     void fordJohnsonD(std::deque<int> &de);
     
-    void binaryInsert(std::vector<int> &sortedVec, int value);
-    // void binaryInsert(std::deque<int> &sortedDeq, int value);
-
+    void binaryInsertV(std::vector<int> &sortedVec, int value);
+    void binaryInsertD(std::deque<int> &sortedDeq, int value);
+    
+    std::deque<int> generateJacobsthalIndices2(int n);
     std::vector<int> generateJacobsthalIndices(int n);
 
 public:

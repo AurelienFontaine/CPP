@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:52:33 by root              #+#    #+#             */
-/*   Updated: 2025/06/28 14:43:08 by afontain         ###   ########.fr       */
+/*   Updated: 2025/06/28 15:30:45 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,38 @@ void PmergeMe::parseSequence(char **av) {
     }
 }
 
-std::vector<int> PmergeMe::generateJacobsthalIndices(int size) {
+std::deque<int> PmergeMe::generateJacobsthalIndices2(int n) {
+    std::deque<int> j;
+    j.push_back(0);
+    j.push_back(1);
+    while (j[j.size() - 1] < n) {
+        int next = j[j.size() - 1] * 2 + j[j.size() - 2];
+        j.push_back(next);
+    }
+    j.pop_back();
+
+    std::deque<int> indices;
+    for (size_t i = 0; i < j.size(); ++i)
+        indices.push_back(j[i]);
+
+    std::deque<bool> used(n, false);
+    for (size_t i = 0; i < indices.size(); ++i)
+        if (indices[i] < n)
+            used[indices[i]] = true;
+
+    for (int i = 0; i < n; ++i)
+        if (!used[i])
+            indices.push_back(i);
+
+    return indices;
+}
+
+
+std::vector<int> PmergeMe::generateJacobsthalIndices(int n) {
     std::vector<int> j;
     j.push_back(0);
     j.push_back(1);
-    while (j[j.size() - 1] < size) {
+    while (j[j.size() - 1] < n) {
         int next = j[j.size() - 1] * 2 + j[j.size() - 2];
         j.push_back(next);
     }
@@ -76,19 +103,34 @@ std::vector<int> PmergeMe::generateJacobsthalIndices(int size) {
     for (size_t i = 0; i < j.size(); ++i)
         indices.push_back(j[i]);
 
-    std::vector<bool> used(size, false);
+    std::vector<bool> used(n, false);
     for (size_t i = 0; i < indices.size(); ++i)
-        if (indices[i] < size)
+        if (indices[i] < n)
             used[indices[i]] = true;
 
-    for (int i = 0; i < size; ++i)
+    for (int i = 0; i < n; ++i)
         if (!used[i])
             indices.push_back(i);
 
     return indices;
 }
 
-void PmergeMe::binaryInsert(std::vector<int> &vec, int value) {
+void PmergeMe::binaryInsertD(std::deque<int> &deq, int value) {
+    int left = 0, right = deq.size();
+    while (left < right) {
+        int mid = (left + right) / 2;
+        if (deq[mid] < value) 
+            left = mid + 1;
+        else 
+            right = mid;
+    }
+    deq.push_back(0); // expand
+    for (int i = deq.size() - 1; i > left; --i)
+        deq[i] = deq[i - 1];
+    deq[left] = value;
+}
+
+void PmergeMe::binaryInsertV(std::vector<int> &vec, int value) {
     int left = 0, right = vec.size();
     while (left < right) {
         int mid = (left + right) / 2;
@@ -113,19 +155,21 @@ void PmergeMe::fordJohnsonV(std::vector<int> &vec) {
     mainChain.reserve(n);
     minima.reserve(n / 2);
 
-    for (int i = 0; i + 1 < n; i += 2) {
-        if (vec[i] > vec[i + 1])
-            pairs.push_back(std::make_pair(vec[i], vec[i + 1]));
-        else
-            pairs.push_back(std::make_pair(vec[i + 1], vec[i]));
+     for (int i = 0; i + 1 < n; i += 2) 
+     {
+        if (vec[i] > vec[i + 1]) 
+        {
+            mainChain.push_back(vec[i]);
+            minima.push_back(vec[i + 1]);
+        } 
+        else 
+        {
+            mainChain.push_back(vec[i + 1]);
+            minima.push_back(vec[i]);
+        }
     }
     if (n % 2 == 1)
         minima.push_back(vec[n - 1]);
-
-    for (size_t i = 0; i < pairs.size(); ++i) {
-        mainChain.push_back(pairs[i].first);
-        minima.push_back(pairs[i].second);
-    }
 
     fordJohnsonV(mainChain);
 
@@ -133,16 +177,50 @@ void PmergeMe::fordJohnsonV(std::vector<int> &vec) {
     for (size_t i = 0; i < insertOrder.size(); ++i) {
         int idx = insertOrder[i];
         if (idx < (int)minima.size())
-            binaryInsert(mainChain, minima[idx]);
+            binaryInsertV(mainChain, minima[idx]);
     }
     vec = mainChain;
 }
 
 void PmergeMe::fordJohnsonD(std::deque<int> &deq) {
-    std::vector<int> tmp(deq.begin(), deq.end());
-    fordJohnsonV(tmp);
-    deq.assign(tmp.begin(), tmp.end());
+    int n = deq.size();
+    if (n <= 1) 
+        return;
+
+    std::deque<std::pair<int, int> > pairs;
+    std::deque<int> mainChain, minima;
+
+     for (int i = 0; i + 1 < n; i += 2) 
+     {
+        if (deq[i] > deq[i + 1]) 
+        {
+            mainChain.push_back(deq[i]);
+            minima.push_back(deq[i + 1]);
+        } 
+        else 
+        {
+            mainChain.push_back(deq[i + 1]);
+            minima.push_back(deq[i]);
+        }
+    }
+    if (n % 2 == 1)
+        minima.push_back(deq[n - 1]);
+
+    fordJohnsonD(mainChain);
+
+    std::deque<int> insertOrder = generateJacobsthalIndices2(minima.size());
+    for (size_t i = 0; i < insertOrder.size(); ++i) {
+        int idx = insertOrder[i];
+        if (idx < (int)minima.size())
+            binaryInsertD(mainChain, minima[idx]);
+    }
+    deq = mainChain;
 }
+// void PmergeMe::fordJohnsonD(std::deque<int> &deq) {
+//     std::vector<int> tmp(deq.begin(), deq.end());
+//     fordJohnsonV(tmp);
+//     deq.assign(tmp.begin(), tmp.end());
+// }
 
 void PmergeMe::sort(char **av) {
     try {
