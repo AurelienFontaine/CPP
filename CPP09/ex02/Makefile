@@ -5,8 +5,8 @@ CC			=	c++
 FLAGS		=	-Wall -Werror -Wextra -std=c++98
 
 SRCS		=	main.cpp			\
-				PmergeMe2.cpp		\
-				myStoi.cpp
+				PmergeMe.cpp		\
+				# myStoi.cpp
 
 INCL		=	PmergeMe.hpp
 

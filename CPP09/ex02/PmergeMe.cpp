@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe2.cpp                                      :+:      :+:    :+:   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:52:33 by root              #+#    #+#             */
-/*   Updated: 2025/06/27 17:00:44 by root             ###   ########.fr       */
+/*   Updated: 2025/06/28 14:43:08 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,10 @@ void PmergeMe::binaryInsert(std::vector<int> &vec, int value) {
     int left = 0, right = vec.size();
     while (left < right) {
         int mid = (left + right) / 2;
-        if (vec[mid] < value) left = mid + 1;
-        else right = mid;
+        if (vec[mid] < value) 
+            left = mid + 1;
+        else 
+            right = mid;
     }
     vec.push_back(0); // expand
     for (int i = vec.size() - 1; i > left; --i)
@@ -103,7 +105,8 @@ void PmergeMe::binaryInsert(std::vector<int> &vec, int value) {
 
 void PmergeMe::fordJohnsonV(std::vector<int> &vec) {
     int n = vec.size();
-    if (n <= 1) return;
+    if (n <= 1) 
+        return;
 
     std::vector<std::pair<int, int> > pairs;
     std::vector<int> mainChain, minima;
@@ -124,7 +127,7 @@ void PmergeMe::fordJohnsonV(std::vector<int> &vec) {
         minima.push_back(pairs[i].second);
     }
 
-    std::sort(mainChain.begin(), mainChain.end());
+    fordJohnsonV(mainChain);
 
     std::vector<int> insertOrder = generateJacobsthalIndices(minima.size());
     for (size_t i = 0; i < insertOrder.size(); ++i) {
@@ -132,7 +135,6 @@ void PmergeMe::fordJohnsonV(std::vector<int> &vec) {
         if (idx < (int)minima.size())
             binaryInsert(mainChain, minima[idx]);
     }
-
     vec = mainChain;
 }
 
